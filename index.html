@@ -1,4 +1,8 @@
 <!DOCTYPE html>
+<!--
+Template Name: Lucas Aragão
+GitHub : https://github.com/lucaasaragao
+-->
 <html>
 
 <head>
@@ -9,417 +13,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
-  <link href="https://fonts.googleapis.com/css?family=Lato:400,700&display=swap" rel="stylesheet">
-
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
-  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css" />
-  <style>
-    /* 1. Css aqui pra facilitar a vida do próximo que for mexer nmisso aqui obs: odeio frontend*/
-    :root {
-      --cor-primaria: #007bff;
-      --cor-primaria-hover: #0056b3;
-      --cor-texto-principal: #333333;
-      --cor-texto-secundario: #555555;
-      --cor-fundo-secao: #f9f9f9;
-      --cor-borda: #eeeeee;
-      --sombra-suave: 0 4px 15px rgba(0, 0, 0, 0.08);
-      --cor-menu-amarelo: #fab335;
-      /* Nova cor amarela para o menu */
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    /* Forçando a largura total para HTML, BODY e o contêiner do header */
-    html,
-    body {
-      margin: 0 !important;
-      padding: 0 !important;
-      width: 100% !important;
-      overflow-x: hidden !important;
-      /* Evita barra de rolagem horizontal indesejada */
-    }
-
-    .bgded.overlay {
-      /* Este é o div que envolve seu header agora */
-      width: 100% !important;
-      max-width: none !important;
-      margin: 0 !important;
-      padding: 0 !important;
-    }
-
-    body {
-      font-family: 'Lato', sans-serif;
-      color: var(--cor-texto-principal);
-    }
-
-    /* 2. Estilos gerais */
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      font-weight: 700;
-    }
-
-    p {
-      line-height: 1.7;
-      color: var(--cor-texto-secundario);
-    }
-
-    a {
-      color: var(--cor-primaria);
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
-    #barra-brasil {
-      background: #333 !important;
-      font-family: 'Lato', sans-serif !important;
-    }
-
-    #header {
-      display: flex;
-      justify-content: space-between;
-      /* Distribui o espaço entre a logo e o menu */
-      align-items: center;
-      min-height: 80px;
-      padding: 0 20px;
-      /* Adiciona padding para a logo e o menu */
-      background-color: var(--cor-menu-amarelo);
-      /* Aplica a cor amarela */
-      width: 100% !important;
-      /* Força a largura total */
-      max-width: none !important;
-      /* Remove qualquer largura máxima */
-      margin: 0 !important;
-      /* Garante que não haja margens */
-      position: relative;
-      z-index: 1000;
-    }
-
-    #header .logo-container {
-      /* Mantém a logo na esquerda */
-    }
-
-    #header .logo {
-      height: 75px;
-      /* Aumentado o tamanho da logo */
-    }
-
-    #meu-menu {
-      font-family: 'Lato', sans-serif;
-      margin: 0 auto;
-      /* Centraliza o menu horizontalmente */
-      flex-grow: 1;
-      /* Permite que o menu ocupe o espaço restante para centralizar */
-      display: flex;
-      /* Adicionado para centralizar o ul.menu-principal */
-      justify-content: center;
-      /* Centraliza os itens do menu */
-      margin-left: -150px; /* Puxa o menu mais para a esquerda */
-    }
-
-    .menu-principal {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      align-items: center;
-      /* justify-content: center; Removido, já está no #meu-menu */
-    }
-
-    .menu-principal>li {
-      position: relative;
-    }
-
-    .menu-principal>li>a {
-      display: block;
-      padding: 15px 20px;
-      color: var(--cor-texto-principal);
-      /* Cor do texto para combinar com o amarelo */
-      font-weight: 700;
-      text-transform: uppercase;
-      text-decoration: none;
-      transition: background-color 0.3s;
-    }
-
-    .menu-principal>li>a:hover,
-    .menu-principal>li>a.active {
-      background-color: rgba(0, 0, 0, 0.1);
-      border-radius: 4px;
-    }
-
-    /* Hover escurece um pouco o amarelo */
-    .submenu {
-      list-style: none;
-      margin: 0;
-      padding: 10px 0;
-      position: absolute;
-      top: 100%;
-      left: 0;
-      min-width: 200px;
-      background-color: #FFFFFF;
-      border-radius: 4px;
-      box-shadow: var(--sombra-suave);
-      opacity: 0;
-      visibility: hidden;
-      transform: translateY(10px);
-      transition: opacity 0.3s, transform 0.3s, visibility 0.3s;
-    }
-
-    .menu-item-has-dropdown:hover>.submenu {
-      opacity: 1;
-      visibility: visible;
-      transform: translateY(0);
-    }
-
-    .submenu li a {
-      display: block;
-      padding: 10px 20px;
-      color: var(--cor-texto-principal);
-      text-decoration: none;
-      transition: background-color 0.3s, color 0.3s;
-    }
-
-    .submenu li a:hover {
-      background-color: var(--cor-fundo-secao);
-      color: var(--cor-primaria);
-    }
-
-    /* 3. layout e seções */
-    /* Mantendo as definições para os outros wrappers para centralizar o conteúdo */
-    .wrapper {
-      max-width: 1300px;
-      /* Ou a largura que seus wrappers internos devem ter */
-      margin: 0 auto;
-      /* Centraliza novamente os outros conteúdos */
-      padding: 0 20px;
-      /* Mantém o padding interno para conteúdo */
-    }
-
-    /* Se o seu layout.css tem um .container, pode ser necessário ajustar também */
-    .container {
-      max-width: 1300px;
-      /* Mantenha para o conteúdo principal */
-      margin: 0 auto;
-    }
-
-
-    #destaques-section {
-      background-color: var(--cor-fundo-secao);
-      padding: 60px 0;
-    }
-
-    /* 4. Seçoeees especificas */
-    #quem-somos-section {
-      padding: 60px 0;
-    }
-
-    #quem-somos-section h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-      text-align: center;
-    }
-
-    #quem-somos-section p {
-      font-size: 1.125rem;
-      max-width: 800px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: center;
-    }
-
-    /* #################### Carossel #################### */
-    #destaques-section .center {
-      margin-bottom: 50px;
-      text-align: center;
-    }
-
-    #destaques-section h3 {
-      font-size: 2.2rem;
-    }
-
-    .livros-carousel {
-      max-width: 1300px;
-      margin: 0 auto;
-    }
-
-    .livro-card {
-      background-color: #FFFFFF;
-      padding: 15px;
-      margin: 0 8px;
-      border-radius: 8px;
-      box-shadow: var(--sombra-suave);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .livro-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .livro-card img {
-      border-radius: 4px;
-      margin-bottom: 15px;
-      max-width: 100%;
-      height: 170px;
-      object-fit: contain;
-    }
-
-    .livro-card h6 {
-      font-size: 0.85rem;
-      margin-top: auto;
-      min-height: 45px;
-    }
-
-    .livro-card p {
-      font-size: 0.75rem;
-    }
-
-    .cta-catalogo {
-      text-align: center;
-      padding-top: 40px;
-      margin-top: 60px;
-      border-top: 2px solid var(--cor-borda);
-    }
-
-    .cta-catalogo h6 {
-      font-size: 1.5rem;
-      margin-bottom: 8px;
-    }
-
-    .slick-dots li button:before {
-      font-size: 12px;
-      color: var(--cor-primaria);
-    }
-
-    .slick-dots li.slick-active button:before {
-      color: var(--cor-primaria-hover);
-    }
-
-    .btn {
-      background-color: var(--cor-primaria);
-      color: #FFFFFF !important;
-      padding: 12px 25px;
-      border-radius: 50px;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 0.8rem;
-      display: inline-block;
-      border: none;
-      transition: background-color 0.3s;
-      text-decoration: none !important;
-    }
-
-    .btn:hover {
-      background-color: var(--cor-primaria-hover);
-      color: #FFFFFF !important;
-      text-decoration: none !important;
-    }
-
-    .fade-in-element {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-
-    .fade-in-element.is-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* #################### Carousel dos livros #################### */
-    .slick-prev,
-    .slick-next {
-      height: 40px;
-      width: 40px;
-      background-color: rgba(0, 0, 0, 0.4);
-      border-radius: 50%;
-      z-index: 10;
-    }
-
-    .slick-prev:hover,
-    .slick-next:hover {
-      background-color: rgba(0, 0, 0, 0.7);
-    }
-
-    .slick-prev {
-      left: -50px;
-    }
-
-    .slick-next {
-      right: -50px;
-    }
-
-    .slick-prev:before,
-    .slick-next:before {
-      font-size: 20px;
-      color: white;
-    }
-
-    @keyframes bannerZoom {
-      0% {
-        transform: scale(1);
-      }
-
-      50% {
-        transform: scale(1.03);
-      }
-
-      100% {
-        transform: scale(1);
-      }
-    }
-
-    #pageintro .banner img {
-
-      object-fit: cover;
-      border-radius: 0 !important;
-      z-index: -1;
-
-
-      animation: bannerZoom 3s infinite alternate ease-in-out;
-      transform-origin: center center;
-    }
-
-    /* #################### Final css #################### */
-    #copyright-fullwidth {
-      width: 100%;
-      background-color: #26272b;
-      /* Definido explicitamente para a cor escura do footer */
-      color: #FFFFFF;
-     
-      padding: 15px 0;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    #copyright-fullwidth a {
-      color: #FFFFFF;
-      
-      text-decoration: none;
-    }
-
-    #copyright-fullwidth a:hover {
-      text-decoration: underline;
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css?family= Lato " rel="stylesheet">
 </head>
 
 <body id="top">
 
+  <!-- barra do goveno começo -->
   <div id="barra-brasil" style="background:#7F7F7F; height: 20px; padding:0 0 0 10px;display:block;">
     <ul id="menu-barra-temp" style="list-style:none;">
       <li style="display:inline;padding-right:10px; margin-right:10px; border-right:1px solid #EDEDED"><a
@@ -429,158 +28,187 @@
           href="http://epwg.governoeletronico.gov.br/barra/atualize.html">Atualize sua Barra de Governo</a></li>
     </ul>
   </div>
+  <!-- barra do goveno FINAL -->
+
+  <!-- Top Background Image Wrapper -->
   <div class="bgded overlay" style="background-image:url('images/demo/fundo.png');">
-    <header id="header" class="hoc clear">
-      <div class="logo-container">
-        <img src="images/Logo-EDUFPB-branca.png" alt="Logo Editora UFPB" class="logo">
-      </div>
-      <nav id="meu-menu">
-        <ul class="menu-principal">
-          <li><a class="active" href="index.html">Home</a></li>
-          <li class="menu-item-has-dropdown"><a href="pages/aEditora.html">Editora</a>
-            <ul class="submenu">
-              <li><a href="pages/documentos.html">Documentos</a></li>
-            </ul>
-          </li>
-          <li><a href="pages/como_publicar.html">Como Publicar</a></li>
-          <li><a href="pages/editais.html">Editais</a></li>
-          <li><a href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/">Catálogo</a></li>
-          <li><a href="pages/ponto_vendas.html">Ponto de Vendas</a></li>
-        </ul>
-      </nav>
-    </header>
     <div class="wrapper row1">
-      <div id="pageintro" class="hoc clear">
-        <div class="banner"><a href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog"><img
-              src="images/demo/banner-home.jpg" style="border-radius: 5%;" alt="Banner Editora UFPB"
-              class="img-responsive"></a></div>
+      <header id="header" class="hoc clear">
+        <div id="logo" class="fl_left">
+          <h1><a href="index.html"><img src="images/demo/logocinza.png" width="40px" height="40px"></a></h1>
+        </div>
+        <nav id="mainav" class="fl_right">
+          <ul class="clear">
+            <li class="active"><a href="index.html">Home</a></li>
+            <li class="drop">
+              <a href="pages/aEditora.html">Editora</a>
+              <ul>
+                  <li><a href="pages/documentos.html">Documentos</a></li>
+              </ul>
+            </li>
+            <li class="active"><a href="pages/como_publicar.html">Como Publicar</a>
+            <li class="active"><a href="pages/editais.html">Editais</a>
+            <li>
+              <a href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/">Catálogo</a>
+            </li>
+            <li class="active"><a href="pages/ponto_vendas.html">Ponto de Vendas</a>
+              <!--
+              <li>
+                <a class="drop" href="#">Sobre</a>
+
+                <ul>
+                  <li><a href="quemSomos.html">Quem Somos</a></li>
+                  <li><a href="aEditora.html">A Editora</a></li>
+                  <li><a href="equipe.html">Equipe</a></li>
+                  <li><a href="contato.html">Contato</a></li>
+                  <li><a href="conselho.html">Conselho Editorial</a></li>
+                </ul>
+              </li>
+              <li>
+                <a class="drop" href="#">Dúvidas</a>
+                <ul>
+                  <li><a href="como_publicar.html">Como Publicar</a></li>
+                  <li><a href="editais.html">Editais</a></li>
+                  <li><a href="ponto_vendas.html">Ponto de Vendas</a></li>
+      
+                </ul>
+              </li>
+              
+              <li>
+                <a
+                  href="https://sipac.ufpb.br/public/visualizaBoletins.do?aba=p-boletins&publico=true"
+                  target="_blank"
+                  >Boletim de Serviços</a
+                >
+              </li>
+              <li><a href="noticias.html">Notícias</a></li>
+              <li>
+                <a href="https://periodicos.ufpb.br/capa/periodicos.php"
+                  >Portal de Periódicos</a
+                >
+              </li>
+              <li>
+                <a class="drop" href="#">documentos</a>
+                <ul>
+                  <li><a href="relatorios.html">Relatório Setorial</a></li>
+                  <li><a href="cronograma.html">Cronogramas e Atividades</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Acesso</a></li>
+              -->
+          </ul>
+        </nav>
+      </header>
+    </div>
+
+    <div class="wrapper row3">
+      <main class="hoc container clear">
+        <!-- main body -->
+
+        <div class="center">
+          <!-- ################################################################################################ -->
+          <h1 align="left"><strong>QUEM SOMOS</strong></h1>
+          <!--<img class="imgr borderedbox inspace-5" src="../images/demo/imgr.gif" alt="">-->
+          <p align="left">
+            A Editora Universitária da UFPB é um dos selos editoriais acadêmicos mais antigos e
+            importantes do país. Criada em 1962 como Imprensa Universitária, tem como objetivo divulgar o conhecimento 
+            científico, técnico, artístico e cultural produzido pela comunidade universitária e por autores comprometidos 
+            com o pensamento crítico e transformador.
+            <br>
+            Com mais de 60 anos de história, tornou-se referência nacional na valorização da produção acadêmica, 
+            aprimorando constantemente seus processos e ampliando o acesso às suas publicações. Atua como elo entre 
+            universidade e sociedade, reafirmando seu compromisso público com o saber.
+          </p>
+        </div>
+      </main>
+    </div>
+
+    <div id="pageintro" class="hoc clear">
+      <!-- SLIDES -->
+      <div class="banner">
+        <a href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog">
+          <img src="images/demo/banner-home.jpg" alt="Banner Editora UFPB" class="img-responsive">
+        </a>
       </div>
+      <!--
+      <div class="flexslider basicslider">
+
+        <ul class="slides">
+          <li>
+            <article>
+              <h3 class="heading">A Editora UFPB divulga a lista das obras aprovadas.</h3>
+              <footer><a class="btn" href="pages/noticias.html">Saiba Mais</a></footer>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3 class="heading">A Editora UFPB divulga a lista das obras homologadas.</h3>
+              <footer><a class="btn" href="pages/noticias.html">Saiba Mais</a></footer>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3 class="heading">A Editora da UFPB prorrogou o prazo para submissão de eBooks.</h3>
+              <footer><a class="btn" href="pages/noticias.html">Saiba Mais</a></footer>
+            </article>
+          </li>
+          <li>
+            <article>
+              <h3 class="heading">EDITORA UFPB LANÇA EDITAL PARA PUBLICAÇÃO DE EBOOKS (Edital 001/2023)</h3>
+              <footer><a class="btn" href="pages/noticias.html">Saiba Mais</a></footer>
+            </article>
+          </li>
+
+
+        </ul>
+      </div>
+      -->
+      <!-- SLIDES -->
     </div>
   </div>
+  <!-- End Top Background Image Wrapper -->
+  <!-- ################################################################################################ -->
 
-  <div class="wrapper row3 fade-in-element" id="quem-somos-section">
-    <main class="hoc container clear">
-      <div class="center">
-        <h1>QUEM SOMOS</h1>
-        <p>A Editora Universitária da UFPB é um dos selos editoriais acadêmicos mais antigos e
-          importantes do país. Criada em 1962 como Imprensa Universitária, tem como objetivo divulgar o conhecimento
-          científico, técnico, artístico e cultural produzido pela comunidade universitária e por autores comprometidos
-          com o pensamento crítico e transformador.
-          <br>
-          Com mais de 60 anos de história, tornou-se referência nacional na valorização da produção acadêmica,
-          aprimorando constantemente seus processos e ampliando o acesso às suas publicações. Atua como elo entre
-          universidade e sociedade, reafirmando seu compromisso público com o saber.</p>
+  <!-- main body -->
+  <!-- ################################################################################################ -->
+      
+  <!-- / main body -->
+  
+  <div class="wrapper row3">
+    <section class="hoc container clear">
+      <div class="btmspace-80 center">
+        <h3 class="nospace"><strong>Os livros em Destaque</strong></h3>
+        <p class="nospace">Alguns dos nossos livros em destaque esse mês.</p>
       </div>
-    </main>
-  </div>
+      <div class="group">
+        <div class="one_third first">
+          <h6 class="nospace font-x1">Veja nosso catálogo Completo</h6>
+          <p>Temos centenas de livros em nosso catálogo&hellip;</p>
+          <footer><a class="btn" target="_blank"
+              href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog">ir para
+              catálogo</a></footer>
+        </div>
+        <article class="one_third"><a target="_blank"
+            href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/981"><img class="btmspace-30"
+              src="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/$$$call$$$/submission/cover/thumbnail?submissionId=981&random=9816006c1cde90d4" alt=""></a>
+          <h6 class="nospace font-x1"><strong>UFPB no combate ao COVID-19</strong></h6>
+          <p>Margareth de Fátima Formiga Melo Diniz; Reinaldo Farias Paiva de Lucena&hellip;</p>
+        </article>
+        <article class="one_third"><a target="_blank"
+            href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/890"><img class="btmspace-30"
+              src="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/$$$call$$$/submission/cover/thumbnail?submissionId=890&random=8906006c1ea0064e" alt=""></a>
+          <h6 class="nospace font-x1"><strong>Manual para publicação de relatórios técnicos</strong></h6>
+          <p>Wagner Junqueira de Araújo; Sâmella Arruda Araújo</p>
+        </article>
+      </div>
 
-  <div class="fade-in-element" id="destaques-section">
-    <section class="container">
-      <div class="center">
-        <h3 class="nospace">Livros em Destaque</h3>
-        <p class="nospace">Conheça nossos lançamentos e principais obras.</p>
-      </div>
-
-      <div class="livros-carousel">
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1235"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1235_934_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Literatura e ecologia: Diálogos eco/feministas</h6>
-          <p> Izabel Brandão, Edilan Ferreira, Elaine Rapôso, Sávio Freitas.</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1282"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1282_981_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Os mitos nórdicos no século 19: arte, história e recepção</h6>
-          <p>Johnni Langer</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1241"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1241_940_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Antropologias na Paraíba</h6>
-          <p>Flávia Ferreira Pires e Marco Aurélio Paz Tella</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1196"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1196_895_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Todas as dores</h6>
-          <p>Telma Cristina Gomes da Silva</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1184"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1184_883_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Dançando no Labirinto</h6>
-          <p>Ailton Santos</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1219"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1219_918_coverImage_pt_BR_t.jpg"
-              style=" margin: center;" alt="Capa do Livro"></a>
-          <h6>Fisgada</h6>
-          <p>Jáder Loures de Brito</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/245"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_245_186_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Trilhas do imaginário: (re)visitando espaços e memórias</h6>
-          <p>Eunice Simões Lins <br> e <br> Heloísa Juncklaus Preis Moraes</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1296"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1296_995_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Representação temática do cordel de circunstância à luz da verossimilhança</h6>
-          <p>Karcia Lúcia Oliveira Dias <br> e <br> Maria Elizabeth Baltar Carneiro de Albuquerque</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/188"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_188_149_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>A rua e a cidade: múltiplos olhares</h6>
-          <p>Doralice Sátyro Maia <br> e <br> Maria Berthilde Moura Filha <br> e <br> Paula Dieb Martins </p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1221"><img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1221_920_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Um mapeamento da finitude</h6>
-          <p>Luiz Carlos Santos Júnior</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/1288"> <img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_1288_987_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Literaturas africanas em perspectiva</h6>
-          <p>Vanessa Riambau Pinheiro</p>
-        </div>
-        <div class="livro-card">
-          <a target="_blank" href="https://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog/book/663"> <img
-              src="https://www.editora.ufpb.br/sistema/press5/public/presses/1/submission_663_535_coverImage_pt_BR_t.jpg"
-              alt="Capa do Livro"></a>
-          <h6>Química orgânica experimental: experiências laboratoriais e vivenciadas</h6>
-          <p>Gabriela Fehn Fiss <br> e <br> Nayara de Lima Oliveira</p>
-        </div>
-      </div>
-      <div class="cta-catalogo">
-        <h6>Não encontrou o que procurava?</h6>
-        <p>Temos centenas de obras disponíveis em nosso acervo completo.</p>
-        <footer><a class="btn" target="_blank"
-            href="http://www.editora.ufpb.br/sistema/press5/index.php/UFPB/catalog">Acessar catálogo completo</a>
-        </footer>
-      </div>
     </section>
   </div>
 
-  <div class="wrapper fade-in-element">
+  <div class="wrapper">
     <article id="shout" class="hoc container clear">
       <div class="three_quarter first">
-        <h2 class="heading btmspace-10">Editora UFPB</h2>
+        <h2 class="heading btmspace-10"><strong>Editora UFPB</strong></h2>
         <p class="nospace">Siga a Editora nas redes sociais e fique por dentro de tudo que acontece aqui.</p>
         <br>
         <div class="one_third first">
@@ -594,20 +222,24 @@
           </ul>
         </div>
       </div>
-      <footer class="one_quarter"><a class="btn" href="https://www.instagram.com/editoraufpb/?hl=pt-br">Seguir</a>
-      </footer>
+      <footer class="one_quarter"><a class="btn" href="#">Seguir</a></footer>
     </article>
   </div>
 
-  <div class="wrapper row4 bgded overlay fade-in-element"
-    style="background-image:url('images/demo/fundo.png'); color: #26272b;">
-    <footer id="footer" class="hoc container clear">
+  
+  
+
+  <div class="wrapper row4 bgded overlay" style="background-image:url('images/demo/fundo.png'); color: #26272b;">
+    <footer id="footer" class="hoc clear">
       <div class="one_third first">
         <ul class="nospace meta">
           <li class="btmspace-15">Endereço:</li>
           <li>
-            <p><i class="fa fa-map-pin"></i> Editora Universitária da UFPB:<br> Rua: Alameda da Oiticica S/N<br> Cidade
-              Universitária, Campus I, Prédio da Editora<br> João Pessoa/PB. CEP: 58.051-970</p>
+            <p><i class="fa fa-map-pin"></i> Editora Universitária da UFPB:
+              <br> Rua: Alameda da Oiticica S/N
+              <br> Cidade Universitária, Campus I, Prédio da Editora
+              <br> João Pessoa/PB. CEP: 58.051-970
+            </p>
           </li>
         </ul>
       </div>
@@ -620,89 +252,28 @@
         </ul>
       </div>
       <div class="one_third">
-        <a href="https://www.abeu.org.br/"><img src="images/demo/abeu.png" style="width: 200px;"></a>
+        <a href="https://www.abeu.org.br/"><img src="images/demo/abeu.png"></a>
       </div>
     </footer>
   </div>
 
-  <div id="copyright-fullwidth">
+  <div class="wrapper row5" style="text-align: center;">
     <div id="copyright" class="hoc clear">
-      <p class="fl_center">Copyright &copy; 2025 - Todos os direitos reservados - <a href="#">Editora UFPB</a></p>
+      <p class="fl_center">Copyright &copy; 2020 - Todos os direitos reservados - <a href="#">Editora UFPB</a></p>
     </div>
   </div>
 
   <a id="backtotop" href="#top"><i class="fa fa-chevron-up"></i></a>
   <div id="footer-brasil"></div>
-
+  <div style="display: none" id="sfc1q6g8ljc88catppqnghaclthzslju6cx"></div>
+  <!-- JAVASCRIPTS -->
   <script src="layout/scripts/jquery.min.js"></script>
   <script src="layout/scripts/jquery.backtotop.js"></script>
   <script src="layout/scripts/jquery.mobilemenu.js"></script>
   <script src="layout/scripts/jquery.flexslider-min.js"></script>
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
-
-  <script>
-    // Não sei se tem problema ou não criar um arquivo novo eem node, então vou fazer aqui mesmo
-    $(document).ready(function() {
-      $('.livros-carousel').slick({
-        dots: true,
-        infinite: true,
-        speed: 500,
-        slidesToShow: 7,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 3000,
-        draggable: true,
-        arrows: true,
-        responsive: [{
-          breakpoint: 1350,
-          settings: {
-            slidesToShow: 5
-          }
-        }, {
-          breakpoint: 1100,
-          settings: {
-            slidesToShow: 4
-          }
-        }, {
-          breakpoint: 978,
-          settings: {
-            slidesToShow: 3
-          }
-        }, {
-          breakpoint: 768,
-          settings: {
-            slidesToShow: 2
-          }
-        }, {
-          breakpoint: 480,
-          settings: {
-            slidesToShow: 1
-          }
-        }]
-      });
-    });
-  </script>
-  <script>
-    $(document).ready(function() {
-      function checkAnimation() {
-        var $window = $(window);
-        var window_height = $window.height();
-        var window_top_position = $window.scrollTop();
-        var window_bottom_position = (window_top_position + window_height);
-        $('.fade-in-element').each(function() {
-          var $element = $(this);
-          var element_height = $element.outerHeight();
-          var element_top_position = $element.offset().top;
-          if ((element_top_position < window_bottom_position) && (element_top_position + element_height > window_top_position)) {
-            $element.addClass('is-visible');
-          }
-        });
-      }
-      $(window).on('scroll resize', checkAnimation);
-      $(window).trigger('scroll');
-    });
-  </script>
+  <!-- Script Começo Barra goveno -->
   <script defer="defer" src="//barra.brasil.gov.br/barra.js" type="text/javascript"></script>
+  <!-- Script Fim Barra goveno -->
 
 </body>
 
